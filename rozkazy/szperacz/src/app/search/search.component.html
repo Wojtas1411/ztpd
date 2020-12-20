@@ -1,0 +1,15 @@
+<div class="head">
+  <h1>Szperacz</h1>
+  <hr/>
+  <form>
+    <label for="query">Szukaj</label>
+    <input type="text" [(ngModel)]="query" name="query" id="query" placeholder="Szukaj"/>
+    <button role="button" (click)="onSearch()">Szukaj</button>
+  </form>
+  <hr/>
+</div>
+<div class="results-container">
+  <div *ngFor="let doc of response?.response?.docs">
+    <app-document-display [document]="doc"></app-document-display>
+  </div>
+</div>

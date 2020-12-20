@@ -1,0 +1,28 @@
+version: '3'
+services:
+  solr:
+    image: solr:8
+    ports:
+     - "8983:8983"
+    volumes:
+      - data:/var/solr
+    command:
+      - solr-precreate
+      - rozkazy 
+      - /opt/solr/server/solr/configsets/sample_techproducts_configs
+  proxy:
+    build: proxy/
+    ports:
+      - 9000:80
+    depends_on: 
+      - solr
+
+  szperacz:
+    build: szperacz/
+    ports:
+      - 8080:80
+    depends_on: 
+      - proxy
+      - solr
+volumes:
+  data:

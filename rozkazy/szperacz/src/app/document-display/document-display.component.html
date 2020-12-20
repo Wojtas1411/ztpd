@@ -1,0 +1,14 @@
+<div class="w-100 pb-5">
+  <div>
+    <strong>Autor</strong> {{document?.author}}
+  </div>
+  <div>
+    <strong>Data</strong> {{document?.last_modified | date}}
+  </div>
+  <div>
+    <strong>Plik</strong> {{document?.resourcename}}
+  </div>
+  <label for="content"><strong>Tresc</strong></label>
+  <textarea id="content" [value]="document?.content" rows="12" class="w-100"></textarea>
+</div>
+
